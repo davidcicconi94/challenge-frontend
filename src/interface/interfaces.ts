@@ -3,7 +3,7 @@ export interface CharacterProps {
   created: string;
   edited: string;
   eye_color: string;
-  films: string[];
+  films: Array<String>;
   gender: string;
   hair_color: string;
   height: string;
@@ -12,16 +12,36 @@ export interface CharacterProps {
   name: string;
   skin_color: string;
   species: string;
-  starships: string[];
+  starships: Array<String>;
   url: string;
-  vehicles: string[];
+  vehicles: Array<String>;
 }
 
 export interface CharacterState {
-  value: CharacterProps;
+  value: Array<CharacterProps>;
+  status: string;
+  error: boolean;
+  loading: boolean;
 }
 
 export interface Error {
   name: string;
   message: string;
+}
+
+export interface FilmsProps {
+  characters: Array<String>;
+  created: string;
+  director: string;
+  edited: string;
+  episode_id: number;
+  opening_crawl: string;
+  planets: Array<String>;
+  producer: string;
+  release_date: string;
+  species: Array<String>;
+  starships: Array<String>;
+  title: string;
+  url: string;
+  vehicles: Array<String>;
 }

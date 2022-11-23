@@ -1,8 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { Error } from "../interface/interfaces";
+import { CharacterState } from "../interface/interfaces";
 
-const initialState = {
+const initialState: CharacterState = {
   value: [
     {
       name: "",
@@ -24,6 +25,8 @@ const initialState = {
     },
   ],
   status: "",
+  loading: false,
+  error: false,
 };
 
 export const getCharacters = createAsyncThunk("get/char", async () => {
