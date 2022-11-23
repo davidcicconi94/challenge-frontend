@@ -1,13 +1,19 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import { CharacterProps } from "../../interface/interfaces";
 
-const Card = ({ name }: any) => {
+const Card = ({ character }: { character: CharacterProps }) => {
+  const { name } = character;
   const finalName = name.replace(/ /g, "").toLowerCase();
-  console.log(finalName);
+  console.log(name);
   return (
-    <Link to={{ pathname: `/details/${finalName}` }}>
-      <h3>{name}</h3>
-    </Link>
+    <div>
+      <Link
+        state={{ character: character }}
+        to={{ pathname: `${finalName}/details` }}
+      >
+        <h3>{name}</h3>
+      </Link>
+    </div>
   );
 };
 

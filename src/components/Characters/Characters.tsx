@@ -12,9 +12,9 @@ const Characters: React.FC = () => {
 
   return (
     <div>
-      {characters.map(({ name }) => (
-        <div key={name}>
-          <Card name={name} />
+      {characters.map((character) => (
+        <div key={character.name}>
+          <Card character={character} />
         </div>
       ))}
     </div>

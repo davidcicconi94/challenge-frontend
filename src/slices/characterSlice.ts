@@ -39,6 +39,17 @@ export const getCharacters = createAsyncThunk("get/char", async () => {
   }
 });
 
+export const getDetail = createAsyncThunk(
+  "character/detail",
+  async (id: any) => {
+    try {
+      const { data } = await axios.get(`https://swapi.dev/api/people/${id}`);
+      console.log("Estos son los detalles", data);
+      return data;
+    } catch (error) {}
+  }
+);
+
 const characterSlice = createSlice({
   name: "characters",
   initialState,
@@ -54,6 +65,9 @@ const characterSlice = createSlice({
     builder.addCase(getCharacters.rejected, (state, action) => {
       state.status = "rejected";
       state.value = [];
+    });
+    builder.addCase(getDetail.fulfilled, (state, action) => {
+      state.value = action.payload;
     });
   },
 });
