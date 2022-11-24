@@ -14,8 +14,8 @@ const Details = () => {
         <Homeworld url={character.homeworld} />
       </p>
       <p>Gender: {character.gender} </p>
-      <p>Height: {character.height} </p>
-      <p>Mass: {character.mass} </p>
+      <p>Height: {character.height} cm. </p>
+      <p>Mass: {character.mass} kg. </p>
       <p>Birth Year: {character.birth_year} </p>
       Films:
       <ul>
