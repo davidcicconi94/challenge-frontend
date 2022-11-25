@@ -15,7 +15,12 @@ const Homeworld = ({ url }: { url: string }) => {
     getApi(url);
   }, [url]);
 
-  return <div> Homeworld: {homeworld} </div>;
+  return (
+    <div>
+      <b className="mx-2">Homeworld:</b>
+      {homeworld}
+    </div>
+  );
 };
 
 export default Homeworld;

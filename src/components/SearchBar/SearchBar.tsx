@@ -4,7 +4,9 @@ const SearchBar = ({ data, placeholder }: any) => {
   const [search, setSearch] = useState<string>("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
     setSearch(e.target.value);
+    console.log(search);
   };
 
   return (
@@ -33,6 +35,7 @@ const SearchBar = ({ data, placeholder }: any) => {
           id="default-search"
           className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-black focus:border-gray-500"
           placeholder={placeholder}
+          onChange={handleChange}
         />
         <button
           type="submit"

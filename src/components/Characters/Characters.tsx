@@ -17,12 +17,11 @@ const Characters: React.FC = () => {
   return (
     <div>
       <SearchBar placeholder="Enter a character..." data={characterName} />
-      <div className="grid grid-cols-2 gap-5 w-1/2 text-center m-auto mt-20">
+      <div className="text-white font-bold grid grid-cols-2 gap-5 w-1/2 text-center m-auto mt-20 rounded">
         {characters.map((character) => (
           <div
             key={character.name}
-            className="p-5"
-            style={{ border: "1px solid red" }}
+            className="p-5 rounded border border-yellow-200"
           >
             <Card character={character} />
           </div>
