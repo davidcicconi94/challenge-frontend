@@ -1,13 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useAppDispatch } from "../../app/hooks";
+import { getByName } from "../../slices/characterSlice";
 
-const SearchBar = ({ data, placeholder }: any) => {
+const SearchBar = ({ placeholder }: any) => {
   const [search, setSearch] = useState<string>("");
+  const dispatch = useAppDispatch();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setSearch(e.target.value);
     console.log(search);
   };
+
+  useEffect(() => {
+    dispatch(getByName(search));
+  }, [dispatch, search]);
 
   return (
     <div>
@@ -37,12 +44,6 @@ const SearchBar = ({ data, placeholder }: any) => {
           placeholder={placeholder}
           onChange={handleChange}
         />
-        <button
-          type="submit"
-          className="text-slate-800 absolute right-2.5 bottom-2.5 bg-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 "
-        >
-          Search
-        </button>
       </div>
     </div>
   );

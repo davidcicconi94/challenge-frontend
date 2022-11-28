@@ -27,33 +27,59 @@ const initialState: CharacterState = {
   status: "",
   loading: false,
   error: false,
+  currentPage: 1,
 };
 
 export const getCharacters = createAsyncThunk("get/char", async () => {
   try {
     const { data } = await axios.get("https://swapi.dev/api/people");
-    console.log(data.results);
+
     return data.results;
   } catch (error: any) {
     return error;
   }
 });
 
-export const getDetail = createAsyncThunk(
-  "character/detail",
-  async (id: any) => {
+export const getByName = createAsyncThunk("get/name", async (name: string) => {
+  try {
+    const { data } = await axios.get(
+      `https://swapi.dev/api/people/?search=${name}`
+    );
+    console.log(data.results);
+    return data.results;
+  } catch (error) {
+    return error;
+  }
+});
+
+export const fetchPage = createAsyncThunk(
+  "char/page",
+  async (pageNumber: number) => {
     try {
-      const { data } = await axios.get(`https://swapi.dev/api/people/${id}`);
-      console.log("Estos son los detalles", data);
-      return data;
-    } catch (error) {}
+      const { data } = await axios.get(
+        `https://swapi.dev/api/people/?page=${pageNumber}`
+      );
+      return data.results;
+    } catch (error) {
+      console.log(error);
+    }
   }
 );
 
 const characterSlice = createSlice({
   name: "characters",
   initialState,
-  reducers: {},
+  reducers: {
+    nextPage: (state) => {
+      state.currentPage += 1;
+    },
+    previousPage: (state) => {
+      state.currentPage -= 1;
+    },
+    setPage: (state, action) => {
+      state.currentPage = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getCharacters.fulfilled, (state, action) => {
       state.status = "success";
@@ -62,14 +88,20 @@ const characterSlice = createSlice({
     builder.addCase(getCharacters.pending, (state, action) => {
       state.status = "pending";
     });
-    builder.addCase(getCharacters.rejected, (state, action) => {
-      state.status = "rejected";
-      state.value = [];
-    });
-    builder.addCase(getDetail.fulfilled, (state, action) => {
-      state.value = action.payload;
-    });
+    builder
+      .addCase(getCharacters.rejected, (state, action) => {
+        state.status = "rejected";
+        state.value = [];
+      })
+      .addCase(getByName.fulfilled, (state, action) => {
+        state.status = "success";
+        state.value = action.payload;
+      })
+      .addCase(fetchPage.fulfilled, (state, action) => {
+        state.value = action.payload;
+      });
   },
 });
 
 export default characterSlice.reducer;
+export const { nextPage, previousPage, setPage } = characterSlice.actions;

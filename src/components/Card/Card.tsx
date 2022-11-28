@@ -4,7 +4,6 @@ import { CharacterProps } from "../../interface/interfaces";
 const Card = ({ character }: { character: CharacterProps }) => {
   const { name } = character;
   const finalName = name.replace(/ /g, "").toLowerCase();
-  console.log(name);
   return (
     <div>
       <Link

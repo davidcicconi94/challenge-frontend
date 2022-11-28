@@ -22,6 +22,7 @@ export interface CharacterState {
   status: string;
   error: boolean;
   loading: boolean;
+  currentPage: number;
 }
 
 export interface Error {
@@ -33,4 +34,11 @@ export interface FilmsProps {
   title: string;
   director: string;
   created: string;
+}
+
+export interface CharacterApiInfo {
+  count: number;
+  previous: string | null;
+  next: string | null;
+  results: CharacterProps[];
 }
