@@ -34,8 +34,9 @@ const Pagination = () => {
     components.push(
       <button
         onClick={() => changePage("number", i)}
-        className={currentPage === i ? "bg-red-800" : "bg-white"}
+        className={currentPage === i ? "bg-amber-200" : "bg-white"}
         disabled={currentPage === i ? true : false}
+        style={{ padding: "7px" }}
       >
         {i}
       </button>
@@ -43,17 +44,17 @@ const Pagination = () => {
   }
 
   return (
-    <div>
+    <div className="w-1/2 m-auto  text-center mt-10">
       <button
         onClick={() => changePage("previous")}
-        style={{ width: "auto", color: "white" }}
+        style={{ width: "auto", color: "white", marginRight: "5px" }}
       >
         Previous
       </button>
       {components}
       <button
         onClick={() => changePage("next")}
-        style={{ width: "auto", color: "white" }}
+        style={{ width: "auto", color: "white", marginLeft: "5px" }}
       >
         Next
       </button>

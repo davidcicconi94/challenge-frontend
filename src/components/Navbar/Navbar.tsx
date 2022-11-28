@@ -7,7 +7,6 @@ const Navbar = () => {
       <nav className="flex-initial  p-5 border-solid bg-black text-yellow-300">
         <h1>Star Wars API</h1>
         <div className="flex flex-row-reverse  space-x-reverse">
-          <Link to="/characters">Characters</Link>
           <Link to="/" className="mx-10">
             Home
           </Link>
