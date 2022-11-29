@@ -10,8 +10,11 @@ const Details = () => {
   const character: CharacterProps = location.state.character;
 
   return (
-    <div className="text-center text-white w-1/4 p-7 child:mb-4 m-auto border-4 rounded-md mt-10">
-      <h1 className="mb-4 text-lg font-bold border-y-2 p-4">
+    <div className="text-center bg-black text-white w-1/2 p-7 child:mb-4 m-auto border-4 rounded-md mt-16 md:w-1/2 sm:w-1/2">
+      <h1
+        className="mb-4 text-lg font-bold border-y-2 p-4"
+        style={{ letterSpacing: "3px" }}
+      >
         {character.name}
       </h1>
       <p>

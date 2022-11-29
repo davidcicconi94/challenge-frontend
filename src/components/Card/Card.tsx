@@ -8,7 +8,7 @@ const Card = ({ character }: { character: CharacterProps }) => {
     <div>
       <Link
         state={{ character: character }}
-        to={{ pathname: `${finalName}/details` }}
+        to={{ pathname: `/characters/${finalName}/details` }}
       >
         <h3>{name}</h3>
       </Link>

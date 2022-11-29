@@ -18,7 +18,7 @@ const SearchBar = ({ placeholder }: any) => {
 
   return (
     <div>
-      <div className="relative w-1/2 m-auto ">
+      <div className="relative w-1/2 m-auto mt-10">
         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
           <svg
             aria-hidden="true"

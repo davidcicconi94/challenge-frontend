@@ -8,14 +8,6 @@ const Pagination = () => {
   const currentPage = useAppSelector((state) => state.character.currentPage);
   const dispatch = useAppDispatch();
 
-  function usePrevious(value: any) {
-    const ref = useRef();
-    useEffect(() => {
-      ref.current = value;
-    });
-    return ref.current;
-  }
-
   function changePage(type: any, number?: any) {
     switch (type) {
       case "next":
@@ -32,29 +24,47 @@ const Pagination = () => {
 
   for (let i = 1; i <= pages; i++) {
     components.push(
-      <button
-        onClick={() => changePage("number", i)}
-        className={currentPage === i ? "bg-amber-200" : "bg-white"}
-        disabled={currentPage === i ? true : false}
-        style={{ padding: "7px" }}
-      >
-        {i}
-      </button>
+      <div className="inline-block sm:max-md:p-2 sm:max-sm:p-2">
+        <button
+          onClick={() => changePage("number", i)}
+          className={
+            currentPage === i
+              ? "bg-amber-200 border text-slate-500 rounded mx-2 "
+              : "bg-white rounded mx-2"
+          }
+          disabled={currentPage === i ? true : false}
+          style={{ padding: "8px" }}
+        >
+          {i}
+        </button>
+      </div>
     );
   }
 
   return (
-    <div className="w-1/2 m-auto  text-center mt-10">
+    <div className="w-1/2 m-auto text-center mt-10 ">
       <button
         onClick={() => changePage("previous")}
-        style={{ width: "auto", color: "white", marginRight: "5px" }}
+        style={{
+          width: "auto",
+          color: "white",
+          marginRight: "5px",
+          letterSpacing: "2px",
+          fontWeight: "bold",
+        }}
       >
         Previous
       </button>
       {components}
       <button
         onClick={() => changePage("next")}
-        style={{ width: "auto", color: "white", marginLeft: "5px" }}
+        style={{
+          width: "auto",
+          color: "white",
+          marginLeft: "5px",
+          letterSpacing: "2px",
+          fontWeight: "bold",
+        }}
       >
         Next
       </button>

@@ -99,6 +99,12 @@ const characterSlice = createSlice({
       })
       .addCase(fetchPage.fulfilled, (state, action) => {
         state.value = action.payload;
+        state.loading = false;
+        state.error = false;
+      })
+      .addCase(fetchPage.pending, (state, action) => {
+        state.loading = true;
+        state.error = false;
       });
   },
 });

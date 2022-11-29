@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <div>
-      <nav className="flex-initial  p-5 border-solid bg-black text-yellow-300">
+      <nav className="flex-initial  p-5 border-solid bg-black text-yellow-300 border-b-4 border-amber-200">
         <h1>Star Wars API</h1>
         <div className="flex flex-row-reverse  space-x-reverse">
           <Link to="/" className="mx-10">
